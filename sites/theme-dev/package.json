@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "theme-dev",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "gatsby": "^2.17.0",
+    "gatsby-theme-docs-mcw": "*",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
+  },
+  "scripts": {
+    "develop": "gatsby develop"
+  }
+}
