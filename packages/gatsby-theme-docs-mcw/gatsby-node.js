@@ -43,7 +43,7 @@ exports.onCreateNode = ({ node, actions, getNode, createNodeId }, options) => {
     id: createNodeId(`DocsPages-${node.id}`),
     title: node.frontmatter.title || parent.name,
     updated: parent.modifiedTime,
-    path: path.join('/', basePath, parent.relativeDirectory, pageName),
+    path: path.join('', basePath, parent.relativeDirectory, pageName),
     parent: node.id,
     internal: {
       type: 'DocsPage',
@@ -70,5 +70,34 @@ exports.createResolvers = ({ createResolvers }) => {
         },
       },
     },
+  })
+}
+
+exports.createPages = async ({ actions, graphql, reporter }) => {
+  const result = await graphql(`
+    query {
+      allDocsPage {
+        nodes {
+          id
+          path
+        }
+      }
+    }
+  `)
+
+  if (result.errors) {
+    reporter.panic('Error loading docs', result.errors)
+  }
+
+  const pages = result.data.allDocsPage.nodes
+
+  pages.forEach(page => {
+    actions.createPage({
+      path: page.path,
+      component: require.resolve('./src/templates/docs-page-template'),
+      context: {
+        pageID: page.id,
+      },
+    })
   })
 }
