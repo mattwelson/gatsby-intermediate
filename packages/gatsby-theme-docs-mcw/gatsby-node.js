@@ -42,12 +42,6 @@ exports.onCreateNode = ({ node, actions, getNode, createNodeId }, options) => {
   const pathToMake = path
     .join('', basePath, parent.relativeDirectory, pageName)
     .replace(/\\/g, '/')
-  console.error({
-    pathToMake,
-    basePath,
-    pageName,
-    parentDir: parent.relativeDirectory,
-  })
 
   actions.createNode({
     id: createNodeId(`DocsPages-${node.id}`),
