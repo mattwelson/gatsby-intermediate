@@ -37,13 +37,23 @@ exports.onCreateNode = ({ node, actions, getNode, createNodeId }, options) => {
     return
 
   // handle index.mdx as index file
+  // stupid regex to fix the stupid windows url breaking stuff
   const pageName = parent.name !== 'index' ? parent.name : ''
+  const pathToMake = path
+    .join('', basePath, parent.relativeDirectory, pageName)
+    .replace(/\\/g, '/')
+  console.error({
+    pathToMake,
+    basePath,
+    pageName,
+    parentDir: parent.relativeDirectory,
+  })
 
   actions.createNode({
     id: createNodeId(`DocsPages-${node.id}`),
     title: node.frontmatter.title || parent.name,
     updated: parent.modifiedTime,
-    path: path.join('', basePath, parent.relativeDirectory, pageName),
+    path: pathToMake,
     parent: node.id,
     internal: {
       type: 'DocsPage',

@@ -6,4 +6,4 @@ module.exports = ({
   basePath,
   contentPath,
   useExternalMDX,
-});
+})
