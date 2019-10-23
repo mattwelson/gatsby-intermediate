@@ -18,5 +18,13 @@ module.exports = {
         uploadFolder: 'fem-workshop',
       },
     },
+    'gatsby-theme-style-guide',
+    {
+      resolve: 'gatsby-theme-docs-mcw',
+      options: {
+        basePath: '/recipes',
+        contentPath: 'content/recipes',
+      },
+    },
   ],
 }
