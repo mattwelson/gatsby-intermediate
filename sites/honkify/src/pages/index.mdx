@@ -7,6 +7,7 @@ When activated, all links on the site will stop working, instead triggering a â€
 Honk. Honk honk honk.
 
 - [See the source code](https://github.com/jlengstorf/honkify)
+- [Read the docs](/docs/installation)
 
 ## Praise for Honkify.js
 
@@ -23,42 +24,42 @@ yarn add honkify
 In your code:
 
 ```js
-import honkify from 'honkify';
+import honkify from 'honkify'
 
 // The goose is loose!
-const unregister = honkify();
+const unregister = honkify()
 
 // Disable so links work again
-unregister();
+unregister()
 ```
 
 ## How to use this on a React site
 
 ```jsx
-import React, { useState } from 'react';
-import honkify from 'honkify';
+import React, { useState } from 'react'
+import honkify from 'honkify'
 
 const Honker = () => {
-  const initialState = { active: false, unregister: () => {} };
-  const [honk, setHonk] = useState(initialState);
+  const initialState = { active: false, unregister: () => {} }
+  const [honk, setHonk] = useState(initialState)
   const toggleHonk = () => {
     if (!honk.active) {
-      const unregister = honkify();
-      setHonk({ active: true, unregister });
+      const unregister = honkify()
+      setHonk({ active: true, unregister })
     }
 
     if (honk.active) {
-      honk.unregister();
-      setHonk(initialState);
+      honk.unregister()
+      setHonk(initialState)
     }
-  };
+  }
 
   return (
     <button onClick={toggleHonk}>{honk.active ? 'unhonk' : 'honk!'}</button>
-  );
-};
+  )
+}
 
-export default Honker;
+export default Honker
 ```
 
 ## Disclaimer: please donâ€™t use this

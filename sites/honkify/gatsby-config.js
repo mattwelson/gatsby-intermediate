@@ -9,6 +9,13 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: 'gatsby-theme-docs-mcw',
+      options: {
+        basePath: '/docs',
+        useExternalMDX: true,
+      },
+    },
     'gatsby-plugin-theme-ui',
   ],
-};
+}
