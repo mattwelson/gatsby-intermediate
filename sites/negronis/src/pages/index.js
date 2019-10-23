@@ -41,6 +41,15 @@ const Index = ({ data }) => (
     >
       Learn the History
     </Link>
+    <Link
+      to="/events"
+      sx={{
+        variant: 'button.hollow',
+        ml: 3,
+      }}
+    >
+      Upcoming Events
+    </Link>
   </Layout>
 )
 
